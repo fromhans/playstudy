@@ -1,0 +1,30 @@
+spring:
+#  config.activate.on-profile: local
+  mvc:
+    throw-exception-if-no-handler-found: true
+  datasource:
+    url: jdbc:${_STUDY_DATASOURCE:mysql}://${_STUDY_DATASOURCE_HOST:211.184.188.42}:${_STUDY_DATASOURCE_PORT:63306}/db_study?allowPublicKeyRetrieval=true&useSSL=false&useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Seoul
+    username: dbaas
+    password: dbaas22**
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: ${_STUDY_DDL_AUTO:update}
+      open-in-view: true
+      show-sql: true
+#      properties:
+#        hibernate:
+#          use_sql_comments: true
+#          format_sql: true
+
+server:
+  port: 11213
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
+  level:
+    root: info
+    study.nextstep: debug
