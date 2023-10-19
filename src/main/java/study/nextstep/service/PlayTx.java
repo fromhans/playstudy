@@ -11,7 +11,6 @@ import study.nextstep.domain.repository.jpa.PlayRepository;
 
 @Service
 @Slf4j
-@Transactional
 @RequiredArgsConstructor
 public class PlayTx {
 
@@ -45,4 +44,21 @@ public class PlayTx {
 
         return playRepository.findById(id).orElseThrow(NotFoundException::new);
     }
+
+    public void logging(){
+        System.out.println("AA");
+    }
+
+    /**
+     * Proxy Bean + Transactional
+     * 서비스클래스 A 호출시 spring에서 proxyA 반환
+     * AOP에 대해서 아래와 같이 동작
+     * ProxyA {
+     *
+     *     transaction start()
+     *      logging()
+     *     trahsaction commit()
+     * }
+     */
+
 }
